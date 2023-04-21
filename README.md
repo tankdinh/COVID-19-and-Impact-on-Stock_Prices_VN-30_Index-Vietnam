@@ -7,7 +7,7 @@ Covid-19 analysis and impact on stock prices of 30 indexes listed on VN-30 Index
  * [Data Preparing]()
  * [Data Processing]()
  * [Exploratory Data Analysis]()
- * [Data Visualization]
+ * [Data Visualization]()
  
  
  
