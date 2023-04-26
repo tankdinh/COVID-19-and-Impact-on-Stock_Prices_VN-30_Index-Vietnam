@@ -16,7 +16,7 @@ The dataset for this project which contains raw COVID-19 data collected from Jan
 ---
 
 ### Data Processing
-Subsequently, the .XLXS files are imported to SQL server
+Subsequently, the .XLSX files are imported to SQL server
 
 ---
 
