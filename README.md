@@ -29,7 +29,7 @@ Subsequently, the .XLSX files are imported to SQL server
 
 ### Exploratory Data Analysis
 
-####1. Total Cases, Total Deaths and Death Rate sorted by Country and Date Worldwide
+#### 1. Total Cases, Total Deaths and Death Rate sorted by Country and Date Worldwide
 --Death Rate shows the likelihood of dying if you are infected with Covid-19
 ```TSQL
 SELECT location, date, total_cases, total_deaths, concat(round((total_deaths/total_cases)*100,2), '%')  as death_rate
@@ -41,7 +41,7 @@ ORDER BY 1,2;
 
 * Afghanistan had the 1st death on 23 Mar 2020 after 40 cases. The likelihood of dying on that date was 2.5%.
 
-####2. Total Cases, Total Deaths and Death Rate sorted by Country and Date in Vietnam
+#### 2. Total Cases, Total Deaths and Death Rate sorted by Country and Date in Vietnam
 --Death Rate shows the likelihood of dying if you are infected with Covid-19
 ```TSQL
 SELECT location, date, total_cases, total_deaths, concat((total_deaths/total_cases) * 100, '%') as death_rate
@@ -52,7 +52,7 @@ ORDER BY 1,2;
 ![image](https://github.com/tankdinh/COVID-19-and-Impact-on-Stock_Prices_VN-30_Index-Vietnam/assets/126235420/6f75ffe4-6cd8-499f-bb19-ca5d53ee02de)
 * Vietnam had 2 first deaths on 1st Aug 2020. The likelihood of dying on that date was 0.35%.
   
-####3. Infection Rate per Population sorted by Country & Date Worldwide
+#### 3. Infection Rate per Population sorted by Country & Date Worldwide
 -- Show the percentage of population infected Covid-19 at a given date
 ```TSQL
 SELECT location, date, total_cases, population, total_cases, (total_cases/population)*100 as infection_rate
@@ -63,7 +63,7 @@ ORDER BY 1,2;
 ![image](https://github.com/tankdinh/COVID-19-and-Impact-on-Stock_Prices_VN-30_Index-Vietnam/assets/126235420/87974321-2882-4a48-9425-878787411242)
 * This is the infection rate over the population of a country at a given date.
   
-####4. Infection Rate per Population by Date in Vietnam
+#### 4. Infection Rate per Population by Date in Vietnam
 -- Show the percentage of population contracting Covid-19 in Vietnam at a given date
 ```TSQL
 SELECT location, date, total_cases, population, (total_cases/population) * 100 as infection_rate
@@ -74,7 +74,7 @@ ORDER BY 2;
  ![image](https://github.com/tankdinh/COVID-19-and-Impact-on-Stock_Prices_VN-30_Index-Vietnam/assets/126235420/2f4e5fae-3516-4cd8-b93b-2b5c9ef71060)
 *On April 2023, the infection rate was 11 to 12 out of 100 people in Vietnam.
 
-####5. Countries with Highest Infection Rate compared to Population Worldwide
+#### 5. Countries with Highest Infection Rate compared to Population Worldwide
 ```TSQL
 SELECT location, population, MAX(total_cases) AS total_cases, MAX((total_cases/population)) * 100 AS infection_rate
 FROM COVID.dbo.covid_death$
@@ -85,7 +85,7 @@ ORDER BY 4 DESC;
 ![image](https://github.com/tankdinh/COVID-19-and-Impact-on-Stock_Prices_VN-30_Index-Vietnam/assets/126235420/b9ec0f5c-4346-4ce4-af29-a0960e6d2e1a)
 * Above is the top 18 countries with highest infection rate.
 
-####6. Overall Highest Infection Rate in Vietnam
+#### 6. Overall Highest Infection Rate in Vietnam
 ```TSQL
 SELECT location, population, MAX(total_cases) AS total_cases, MAX((total_cases/population)) * 100 AS infection_rate
 FROM COVID.dbo.covid_death$
@@ -96,7 +96,7 @@ ORDER BY 4 DESC;
 ![image](https://github.com/tankdinh/COVID-19-and-Impact-on-Stock_Prices_VN-30_Index-Vietnam/assets/126235420/1e5053b4-720b-4adf-b9e0-bd6fc3edad03)
 * With the population of more than 98 million, until 12 Dec 2022, the infection rate in Vietnam is 11.74%.
   
-####7. Highest Death Count per Population & Death Rate Worldwide
+#### 7. Highest Death Count per Population & Death Rate Worldwide
 ```TSQL
 SELECT location, population, MAX(total_deaths) AS total_deaths, (MAX(total_deaths)/population) * 100 AS death_rate_by_population
 FROM COVID.dbo.covid_death$
@@ -108,7 +108,7 @@ ORDER BY death_rate_by_population DESC;
 * Peru has highest death rate, while US has highest death count.
 ![image](https://github.com/tankdinh/COVID-19-and-Impact-on-Stock_Prices_VN-30_Index-Vietnam/assets/126235420/f0deba9c-6afe-4829-ad70-60b22e7e65b6)
 
-####8. Highest Death Count by Population & Death Rate in Vietnam
+#### 8. Highest Death Count by Population & Death Rate in Vietnam
 ```TSQL
 SELECT location, population, MAX(total_deaths) AS total_deaths, (MAX(total_deaths)/population) * 100 AS death_rate_by_population
 FROM COVID.dbo.covid_death$
@@ -119,7 +119,7 @@ ORDER BY death_rate_by_population DESC;
 ![image](https://github.com/tankdinh/COVID-19-and-Impact-on-Stock_Prices_VN-30_Index-Vietnam/assets/126235420/57d38036-50fc-4b4d-b47f-09f4740fac2f)
 * Up to 12 Dec 2022, Vietnam has the average death of 0.04%.
 
-####9. Infection Rate & Death Rate by Continent 
+#### 9. Infection Rate & Death Rate by Continent 
 ```TSQL
 SELECT d.location, d.population, MAX(total_cases) AS total_cases, 
  MAX(total_deaths) AS total_deaths,
@@ -139,7 +139,7 @@ ORDER BY (MAX(total_cases)/d.population) * 100 DESC;
 * Americas has highest vaccination rate, followed by Asia.
 * Europe has the highest infection rate, followed by Oceania.
 
-10. Total Cases, Total Death, Infection Rate, Death Rate (if infected), and Vaccination Rate by Income Level Worldwide
+#### 10. Total Cases, Total Death, Infection Rate, Death Rate (if infected), and Vaccination Rate by Income Level Worldwide
 ```TSQL
 SELECT d.location, d.population, MAX(total_cases) AS total_cases, 
  MAX(total_deaths) AS total_deaths,
@@ -159,7 +159,7 @@ ORDER BY (MAX(total_cases)/d.population) * 100 DESC;
 
 -- ANALYSIS BY VACCINATION --
 
-####1. Total Vaccinations, People Vaccinated, People Fully Vaccinated, and Total Boosters by Country
+#### 1. Total Vaccinations, People Vaccinated, People Fully Vaccinated, and Total Boosters by Country
 ```TSQL
 SELECT 
   d.location, d.population,
@@ -177,7 +177,7 @@ ORDER BY total_vaccination DESC;
 * Above is the 10 leading countries in terms of total number of vaccinations. 
 * China is currently on top, Vietnam is at 9th place.
 
-####2. Total Vaccinations, People Vaccinated, People Fully Vaccinated, and Total Boosters in Vietnam
+#### 2. Total Vaccinations, People Vaccinated, People Fully Vaccinated, and Total Boosters in Vietnam
 ```TSQL
 SELECT 
   d.location, d.population,
@@ -194,7 +194,7 @@ ORDER BY total_vaccination DESC;
 ![image](https://github.com/tankdinh/COVID-19-and-Impact-on-Stock_Prices_VN-30_Index-Vietnam/assets/126235420/4fcfc7d2-e86b-4caa-9c2a-0cdf86d4d975)
 
 
-####3. Total Vaccinations Rate, People Vaccinated Rate, People Fully Vaccinated Rate, and Total Boosters Rate by Country. 
+#### 3. Total Vaccinations Rate, People Vaccinated Rate, People Fully Vaccinated Rate, and Total Boosters Rate by Country. 
 --- These metrics show the overall percentage of population vaccinated against Covid-19
 ```TSQL
 SELECT 
@@ -212,7 +212,7 @@ ORDER BY total_vaccination_rate DESC;
 ![image](https://github.com/tankdinh/COVID-19-and-Impact-on-Stock_Prices_VN-30_Index-Vietnam/assets/126235420/cffb2e5c-b8a2-4e65-aac0-a8523401943e)
 * Cuba has the highest total vaccination rate. Most Asia countries are on top 12.
 
-####4. Total Vaccinations Rate, People Vaccinated Rate, People Fully Vaccinated Rate, and Total Boosters Rate in Vietnam.
+#### 4. Total Vaccinations Rate, People Vaccinated Rate, People Fully Vaccinated Rate, and Total Boosters Rate in Vietnam.
 ---These metrics show the overall percentage of Vietnamese population vaccinated against Covid-19
 ```TSQL
 SELECT 
@@ -231,7 +231,7 @@ GROUP BY d.location, d.population;
 * Over 92% of Vietnamese population has vaccinated at least 1 dose.
 * Over 86% of Vietnamese population has fully vacciated.
   
-####5. Rolling Vaccination Rate, New Cases, and New Deaths by Country and Date.
+#### 5. Rolling Vaccination Rate, New Cases, and New Deaths by Country and Date.
 ---These metrics show the movement of New Cases and New Deaths as the population vaccinated rate increases
 ```TSQL
 SELECT 
@@ -248,7 +248,7 @@ ORDER BY d.location, v.date;
 ![image](https://github.com/tankdinh/COVID-19-and-Impact-on-Stock_Prices_VN-30_Index-Vietnam/assets/126235420/31197fcb-4f62-4592-acde-8996c3abc4f6)
 * Vaccinations in Malaysia began on 25 Feb 2021.
   
-####6. Rolling Vaccination Rate, New Cases, and New Deaths by Date in Vietnam.
+#### 6. Rolling Vaccination Rate, New Cases, and New Deaths by Date in Vietnam.
 ---These metrics show the movement of New Cases and New Deaths as the population vaccinated rate increases
 ```TSQL
 SELECT 
@@ -265,7 +265,9 @@ ORDER BY v.date
 ![image](https://github.com/tankdinh/COVID-19-and-Impact-on-Stock_Prices_VN-30_Index-Vietnam/assets/126235420/7e0b0cd7-b966-43d1-beaf-ecc87322982e)
 * Vaccinations in Vietnam began on 12 Mar 2021.
 
-####1. Stock Prices of 30 indexes listed on VN-30 Index a year before the Pandemic.
+-- ANALYSIS BY STOCK PRICES --
+
+#### 1. Stock Prices of 30 indexes listed on VN-30 Index a year before the Pandemic.
 ```TSQL
 SELECT [ticker], AVG([open]) AS avg_open, AVG([high]) AS avg_high, AVG([low]) AS avg_low, AVG([close]) AS avg_close, AVG([volume]) AS avg_volume
 FROM COVID.dbo.index$
@@ -275,7 +277,7 @@ GROUP BY [ticker], [date]
 ![image](https://github.com/tankdinh/COVID-19-and-Impact-on-Stock_Prices_VN-30_Index-Vietnam/assets/126235420/25f9da60-5c35-4478-9275-32b77defaddf)
 
 
-####2. Infection Rate & Death Rate vs Vn-30 Index Closing Price by Date during Phase 1 of the Pandemic (23 January – 24 July 2020).
+#### 2. Infection Rate & Death Rate vs Vn-30 Index Closing Price by Date during Phase 1 of the Pandemic (23 January – 24 July 2020).
 ```TSQL
 SELECT d.date, location, new_cases, total_cases, new_deaths, total_deaths, (total_cases/population) * 100 AS infection_rate, 
   i.[ticker], i.[close]
@@ -289,7 +291,7 @@ WHERE location = 'Vietnam' AND i.[ticker] is not null
 ![image](https://github.com/tankdinh/COVID-19-and-Impact-on-Stock_Prices_VN-30_Index-Vietnam/assets/126235420/4440d5bb-a3b7-4348-8d65-d343a0b753ec)
 * Stock prices across the world, including in Vietnam, experienced significant declines as the pandemic spread and lockdowns were implemented. Investors were uncertain about the economic impact of the virus.
 
-####3. Infection Rate & Death Rate vs Vn-30 Index Closing Price by Date during Phase 2 of the Pandemic (25 July 2020 – 27 January 2021)
+#### 3. Infection Rate & Death Rate vs Vn-30 Index Closing Price by Date during Phase 2 of the Pandemic (25 July 2020 – 27 January 2021)
 ```TSQL
 SELECT d.date, location, new_cases, total_cases, new_deaths, total_deaths, (total_cases/population) * 100 AS infection_rate, 
   i.[close], i.[ticker]
@@ -304,7 +306,7 @@ ORDER BY i.[ticker], d.date ASC;
 * As governments and central banks implemented fiscal and monetary measures to counteract the economic effects of the pandemic, stock prices often experienced periods of volatility and recovery. News about vaccine developments and easing restrictions might have contributed to market optimism.
 * Vietnam was declared free of community transmission of COVID-19 for the second time. The stock prices of the VN-30 Index reached record highs.
 
-####4. Infection Rate & Death Rate vs Vn-30 Index Closing Price by Date during Phase 3 of the Pandemic (28 January – 26 April 2021)
+#### 4. Infection Rate & Death Rate vs Vn-30 Index Closing Price by Date during Phase 3 of the Pandemic (28 January – 26 April 2021)
 ```TSQL
 SELECT d.date, location, new_cases, total_cases, new_deaths, total_deaths, (total_cases/population) * 100 AS infection_rate, 
   i.[close], i.[ticker]
@@ -318,7 +320,7 @@ ORDER BY i.[ticker], d.date ASC;
 ![image](https://github.com/tankdinh/COVID-19-and-Impact-on-Stock_Prices_VN-30_Index-Vietnam/assets/126235420/8c811236-a512-48c5-8c88-6a9820a1c6db)
 * This outbreak started in Hai Duong from a person who was found positive after entering Japan, and the true source of the infection is unknown. The VN-30 Index fell by 2.2% on that day, as investors became concerned about the economic impact of the new outbreaks but it slowly recovered.
   
-####5. Infection Rate & Death Rate vs Vn-30 Index Closing Price by Date during Phase 4 of the Pandemic (27 April 2021 – ongoing)
+#### 5. Infection Rate & Death Rate vs Vn-30 Index Closing Price by Date during Phase 4 of the Pandemic (27 April 2021 – ongoing)
 ```TSQL
 SELECT d.date, location, new_cases, total_cases, new_deaths, total_deaths, (total_cases/population) * 100 AS infection_rate, 
   i.[close], i.[ticker]
@@ -332,7 +334,7 @@ ORDER BY i.[ticker], d.date ASC;
 ![image](https://github.com/tankdinh/COVID-19-and-Impact-on-Stock_Prices_VN-30_Index-Vietnam/assets/126235420/0b137b71-5cf8-48a3-b543-2c83cca0d505)
 * Outbreaks were discovered in all localities due to the more transmissible Delta variant and Omicron variant was negative. It initially scared the investors just like the previous outbreak and it also recovered just like the precedent.
 
-####6.
+#### 6.  Vn-30 Index Closing Price and Total Vaccinations & Vaccination Rate 
 ```TSQL
 SELECT v.date, location, population, new_vaccinations, total_vaccinations, (total_vaccinations/population) * 100 AS vaccination_rate, 
   i.[close], i.[ticker]
@@ -347,5 +349,7 @@ ORDER BY i.[ticker], v.date ASC;
 * Stock Prices showed promising numbers when vaccinations started to take effect in Viet Nam.
 
 Different sectors of the economy were affected differently. Sectors such as tourism, hospitality, and retail might have seen more significant declines due to lockdowns and reduced consumer activity. On the other hand, sectors related to technology, healthcare, and e-commerce might have experienced relative resilience or even growth.
+
 Measures taken by the Vietnamese government to manage the pandemic, such as lockdowns, travel restrictions, and economic support packages, could have influenced investor sentiment and stock prices.
+
 Over time, as Vietnam adapted to the pandemic and businesses adjusted their operations, stock prices might have reflected changing market dynamics.   
