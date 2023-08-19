@@ -1,5 +1,3 @@
-![21](https://github.com/tankdinh/COVID-19-and-Impact-on-Stock_Prices_VN-30_Index-Vietnam/assets/126235420/319b3cec-fdcc-4279-97fd-8797ac6080ca)# COVID-19-and-Impact-on-Stock_Prices_VN-30_Index-Vietnam
-Covid-19 analysis and impact on stock prices of 30 indexes listed on VN-30 Index - Vietnam
 
 ## :bookmark_tabs: Table of Contents 
 
