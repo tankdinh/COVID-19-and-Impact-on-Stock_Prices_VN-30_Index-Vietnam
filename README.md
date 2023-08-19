@@ -105,7 +105,9 @@ GROUP BY location, population
 ORDER BY death_rate_by_population DESC;
 ```
 ![image](https://github.com/tankdinh/COVID-19-and-Impact-on-Stock_Prices_VN-30_Index-Vietnam/assets/126235420/82968362-bfea-4ea9-9a26-7bdc65835029)
+
 * Peru has highest death rate, while US has highest death count.
+  
 ![image](https://github.com/tankdinh/COVID-19-and-Impact-on-Stock_Prices_VN-30_Index-Vietnam/assets/126235420/f0deba9c-6afe-4829-ad70-60b22e7e65b6)
 
 #### 8. Highest Death Count by Population & Death Rate in Vietnam
